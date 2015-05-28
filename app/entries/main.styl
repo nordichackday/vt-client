@@ -1,0 +1,77 @@
+@import "nib";
+
+global-reset();
+
+html {
+  font-size: 62.5%;
+  font-family: 'HelveticaNeue-Medium';
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  line-height: 1.5;
+}
+
+html,
+body,
+.page,
+.story {
+  height: 100%;
+}
+
+.media-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 300px;
+  bottom: 0;
+  background: #fe0;
+}
+
+.media-viewer #map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.timeline {
+  position: absolute;
+  width: 300px;
+  right: 0;
+  top: 0;
+}
+
+// .story-app {
+//   background: #fe0;
+//   display: flex;
+// }
+
+// .media-viewer {
+//   flex: 3;
+// }
+
+// .timeline {
+//   background: #999;
+//   flex: 1;
+//   overflow: auto;
+//   height: 800px;
+// }
+
+.timeline--entry {
+  padding: 20px;
+  border-bottom: 1px solid #999;
+}
+
+// .timeline--entry.is-visible {
+//   background: #def;
+// }
+
+// .timeline--entry.is-above-fold {
+//   background: #00f;
+// }
+
+// #map {
+//   width: 600px;
+//   height: 400px;
+//   background: #999;
+// }
