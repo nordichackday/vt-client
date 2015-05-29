@@ -19,6 +19,8 @@ export default class Timeline extends React.Component {
       activeStoryId: id
     });
 
+    console.log('activate this', id);
+
     if (this.props.onActivateNode) {
       this.props.onActivateNode(id);
     }
@@ -28,7 +30,7 @@ export default class Timeline extends React.Component {
     const nodes = this.props.nodes.map((node, i) => {
       return (
         <TimelineEntry
-          isActive={node.mediaId === this.state.activeStoryId}
+          isActive={+node.mediaId === +this.state.activeStoryId}
           onActivate={this.handleActivate.bind(this)}
           parentHeight={this.state.height}
           parentScrollTop={this.state.scrollTop} {...node}

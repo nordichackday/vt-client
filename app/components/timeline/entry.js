@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 
 export default class TimelineEntry extends React.Component {
   constructor(props) {
@@ -38,12 +37,9 @@ export default class TimelineEntry extends React.Component {
       className += ' is-active';
     }
 
-    const time = moment(parseInt(this.props.timestamp, 10) * 1000);
-
     return (
       <div onClick={ this.handleActivate.bind(this) } className={className}>
-        <div className="timeline--node-time">{time.format('MMMM Do YYYY, h:mm:ss a')}</div>
-        <div className="timeline--node-intro">{this.props.intro}</div>
+        <div className="timeline--node-label">{this.props.label}</div>
         <div className="timeline--node-body">{this.props.body}</div>
       </div>
     );

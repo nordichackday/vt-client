@@ -9,21 +9,21 @@ export default class Map extends React.Component {
   }
 
   componentDidMount() {
-    const data = JSON.parse(this.props.data);
+    const data = JSON.parse("{\"bounds\": [[63.2270032,-24.3055935], [66.5336615,-13.0336209]]}");
 
-    console.log(data);
-
+    // Set Mapbox access token
     L.mapbox.accessToken = 'pk.eyJ1IjoibnJrIiwiYSI6Ii14T3NfSzgifQ.0N5h3SI2b6bemxP_1YESIA';
 
-    // create a map in the "map" div, set the view to a given place and zoom
-    var map = L.mapbox.map('map', 'mapbox.streets')
-      .setView([51.505, -0.09], 13);
+    // Create a map in the "map" div, set the view to a given place and zoom
+    var map = L.mapbox.map('map', 'mapbox.streets');
 
-    // L.Icon.Default.imagePath = 'http://localhost:3000/images/';
+    // Update map bounds
+    map.fitBounds(data.bounds);
 
-    // var stamenLayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png', {
-    //   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
-    // }).addTo(map);
+    // Use a special map theme
+    L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
+      attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
+    }).addTo(map);
 
     // Add a marker in the given location, attach some popup content to it and open the popup
     L.marker([51.5, -0.09]).addTo(map)
@@ -32,6 +32,8 @@ export default class Map extends React.Component {
   }
 
   render() {
+    console.log('render map', this.props);
+
     return (
       <div className='map' id='map'></div>
     );

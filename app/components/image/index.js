@@ -9,7 +9,7 @@ export default class Image extends React.Component {
   }
 
   render() {
-    const data = JSON.parse(this.props.data);
+    const data = JSON.parse(this.props.data || '{}');
     const inlineStyle = { backgroundImage: 'url(' + data.originalUrl + ')' };
 
     return (

@@ -9,7 +9,7 @@ export default class Story extends React.Component {
     super(props);
 
     this.state = {
-      mediaId: (props.nodes && props.nodes.length ? props.nodes[0].mediaId : null),
+      mediaId: (props.nodes && props.nodes.length ? +props.nodes[0].mediaId : null),
       height: 0
     };
   }

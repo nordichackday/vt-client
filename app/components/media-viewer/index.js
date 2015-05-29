@@ -9,26 +9,29 @@ export default class MediaViewer extends React.Component {
   }
 
   render() {
-    const mediaData = this.props.nodes.filter((node) => {
-      return node.mediaId === this.props.mediaId;
+    const currNodes = this.props.nodes.filter((node) => {
+      return +node.mediaId === +this.props.mediaId;
     });
 
     let media;
 
-    if (mediaData.length) {
-      const type = this.props.media ? this.props.media.type : 'image';
+    if (currNodes.length) {
+      const nodeData = currNodes[0];
+      const nodeMedia = (nodeData.media && nodeData.media.length) ? nodeData.media[0] : {};
+      const type = nodeMedia.id || 1;
+      const data = nodeMedia.data || '{}';
 
       switch (type) {
-        case 'map':
-          media = <Map data={mediaData[0].data || "{\"bounds\":[[0,0],[0,0]]}"} />;
+        case 2: // map
+          media = <Map data={data} />;
           break;
 
-        case 'image':
-          media = <Image data={mediaData[0].data || "{\"originalUrl\":\"http://static01.nyt.com/images/2012/11/22/arts/22CENTRAL/22CENTRAL-articleLarge.jpg\"}"} />;
+        case 1: // image
+          media = <Image data={data} />;
           break;
 
         default: // for demo purpose
-          media = <Map data={mediaData[0].data || "{\"bounds\":[[0,0],[0,0]]}"} />;
+          media = <div>Unknown media type: {type}</div>;
           break;
       }
     }
