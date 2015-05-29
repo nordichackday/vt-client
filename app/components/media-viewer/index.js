@@ -17,8 +17,8 @@ export default class MediaViewer extends React.Component {
 
     if (currNodes.length) {
       const nodeData = currNodes[0];
-      const nodeMedia = (nodeData.media && nodeData.media.length) ? nodeData.media[0] : {};
-      const type = nodeMedia.id || 1;
+      const nodeMedia = (nodeData.widget && nodeData.widget.length) ? nodeData.widget[0] : {};
+      const type = +nodeMedia.id || 1;
       const data = nodeMedia.data || '{}';
 
       switch (type) {

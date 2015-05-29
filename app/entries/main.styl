@@ -4,7 +4,8 @@ global-reset();
 
 html {
   font-size: 62.5%;
-  font-family: 'HelveticaNeue-Medium';
+  font-family: 'Helvetica Neue';
+  // font-family: 'HelveticaNeue-Medium';
   -webkit-font-smoothing: antialiased;
 }
 
@@ -57,17 +58,29 @@ body,
   z-index: 9;
 }
 
+.timeline--credits {
+  font-size: 14px;
+  padding: 20px 30px;
+}
+
+.timeline--credits h3 {
+  font-family: 'HelveticaNeue-Medium';
+  margin: 0 0 5px;
+}
+
 .timeline--title {
+  font-family: 'HelveticaNeue-Medium';
   font-size: 20px;
-  padding: 20px 20px 10px;
+  padding: 20px 20px 5px;
 }
 
 .timeline--intro {
-  font-size: 14px;
+  font-size: 16px;
   padding: 5px 20px 20px;
 }
 
 .timeline--nodes {
+  padding: 0 0 200px;
   // border-top: 1px solid rgba(0, 0, 0, .05);
 }
 
@@ -78,15 +91,20 @@ body,
   // border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.timeline--node:hover {
-  background: #def;
-}
+// .timeline--node:hover {
+//   background: #def;
+// }
 
 .timeline--node-label {
-  font-size: 12px;
+  font-size: 16px;
+  font-family: 'HelveticaNeue-Medium';
   display: inline-block;
-  border-bottom: 1px solid rgba(0, 0, 0, .1);
-  margin: 0 0 10px;
+  // border-bottom: 1px solid rgba(0, 0, 0, .1);
+  // margin: 0 0 10px;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
 }
 
 .timeline--node-intro {
@@ -95,16 +113,16 @@ body,
 
 .timeline--node-body {
   font-size: 14px;
-  margin: 10px 0 0;
+  margin: 5px 0 0;
 }
 
 .timeline--node:before {
   display: block;
   content: '';
   position: absolute;
-  top: 0;
+  top: 24px;
   left: 30px;
-  bottom: 0;
+  bottom: -24px;
   width: 2px;
   background: rgba(0, 0, 0, .1);
   z-index: 10;
@@ -112,6 +130,7 @@ body,
 }
 
 .timeline--node:after {
+  transition: all 200ms;
   border-radius: 50%;
   width: 4px;
   height: 4px;
@@ -131,14 +150,18 @@ body,
   height: 10px;
   top: 17px;
   left: 23px;
-  border: 3px solid #000;
+  border: 3px solid #09f;
+}
+
+.timeline--node:last-child:before {
+  display: none;
 }
 
 .timeline--node.is-active {
   // background: #00f;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .media-viewer {
     top: 0;
     left: 0;

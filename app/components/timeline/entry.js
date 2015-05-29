@@ -33,12 +33,15 @@ export default class TimelineEntry extends React.Component {
   render() {
     let className = 'timeline--node';
 
+    const offsetTop = this.state.offsetTop - this.props.parentScrollTop;
+    // console.log(this.props.index + ': offsetTop=' + offsetTop + ' pH=' + this.props.parentHeight);
+
     if (this.props.isActive) {
       className += ' is-active';
     }
 
     return (
-      <div onClick={ this.handleActivate.bind(this) } className={className}>
+      <div onMouseEnter={ this.handleActivate.bind(this) } className={className}>
         <div className="timeline--node-label">{this.props.label}</div>
         <div className="timeline--node-body">{this.props.body}</div>
       </div>

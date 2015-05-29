@@ -24,7 +24,7 @@ export default class Story extends React.Component {
     return (
       <div className="story">
         <MediaViewer mediaId={this.state.mediaId} nodes={this.props.nodes} />
-        <Timeline mediaId={this.state.mediaId} onActivateNode={this.handleActivateNode.bind(this)} title={this.props.title} nodes={this.props.nodes} />
+        <Timeline mediaId={this.state.mediaId} onActivateNode={this.handleActivateNode.bind(this)} title={this.props.title} intro={this.props.intro} nodes={this.props.nodes} />
       </div>
     );
   }
