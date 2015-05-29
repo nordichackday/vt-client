@@ -23,9 +23,11 @@ body,
   position: fixed;
   top: 0;
   left: 0;
-  right: 300px;
+  right: 400px;
   bottom: 0;
   background: #ddd;
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .25);
 }
 
 .media-viewer #map {
@@ -39,6 +41,7 @@ body,
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .media--image img {
@@ -47,9 +50,11 @@ body,
 
 .timeline {
   position: absolute;
-  width: 300px;
+  width: 400px;
   right: 0;
   top: 0;
+  background: #fff;
+  z-index: 9;
 }
 
 .timeline--title {
@@ -63,14 +68,14 @@ body,
 }
 
 .timeline--nodes {
-  border-top: 1px solid rgba(0, 0, 0, .05);
+  // border-top: 1px solid rgba(0, 0, 0, .05);
 }
 
 .timeline--node {
   // font-size: 14px;
   position: relative;
   padding: 14px 20px 20px 60px;
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
+  // border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
 .timeline--node:hover {
@@ -114,7 +119,7 @@ body,
   position: absolute;
   top: 21px;
   left: 27px;
-  background: #999;
+  background: #fff;
   pointer-events: none;
   z-index: 11;
   border: 2px solid #000;
