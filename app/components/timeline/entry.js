@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default class TimelineEntry extends React.Component {
   constructor(props) {
@@ -20,76 +21,31 @@ export default class TimelineEntry extends React.Component {
       height: $el.outerHeight(),
       offsetTop: $el.offset().top
     });
-
-  //   if (nextProps.parentScrollTop === this.props.parentScrollTop) {
-  //     return;
-  //   }
-
-
-  //   // console.log(entryHeight);
-
-  //   if ((offsetTop + entryHeight) >= 0 && offsetTop <= this.props.parentHeight) {
-  //     console.log('visible');
-  //     this.setState({
-  //       isVisible: true
-  //     });
-
-  //     // console.log('componentWillUpdate', this.props.intro, entryHeight);
-  //   } else {
-  //     this.setState({
-  //       isVisible: false
-  //     });
-  //   }
   }
 
-  // getClassName() {
-  //   let className = 'timeline--entry';
+  handleActivate(e) {
+    e.preventDefault();
 
-  //   if (this.state.isVisible) {
-  //     className == ' is-visible';
-  //   }
-
-  //   return className;
-  // }
+    if (this.props.onActivate) {
+      this.props.onActivate('' + this.props.mediaId);
+    }
+  }
 
   render() {
-    let className = 'timeline--entry';
+    let className = 'timeline--node';
 
-    // console.log('------- render timeline entry', this.state);
-
-    const offsetTop = this.state.offsetTop - this.props.parentScrollTop;
-    const offsetBottom = offsetTop + this.state.height;
-
-    console.log('>', offsetTop, offsetBottom, this.props.parentScrollTop);
-
-    if (offsetBottom <= 0) {
-      className += ' is-above-fold';
-      // isInList = true;
-      // $eventGroup.addClass('above-fold-top');
-    } else {
-      // $eventGroup.removeClass('above-fold-top');
+    if (this.props.isActive) {
+      className += ' is-active';
     }
 
-    // if (offsetTop >= ) {
-
-    // }
-
-  //   if ((this.state.offsetTop + this.state.height) >= 0 && this.state.offsetTop <= this.props.parentHeight) {
-  //     console.log('visible');
-  //     className == ' is-visible';
-  // //     this.setState({
-  // //       isVisible: true
-  // //     });
-
-  // //     // console.log('componentWillUpdate', this.props.intro, entryHeight);
-  //   } else {
-  // //     this.setState({
-  // //       isVisible: false
-  // //     });
-  //   }
+    const time = moment(parseInt(this.props.timestamp, 10) * 1000);
 
     return (
-      <div className={className}>{this.props.intro}</div>
+      <div onClick={ this.handleActivate.bind(this) } className={className}>
+        <div className="timeline--node-time">{time.format('MMMM Do YYYY, h:mm:ss a')}</div>
+        <div className="timeline--node-intro">{this.props.intro}</div>
+        <div className="timeline--node-body">{this.props.body}</div>
+      </div>
     );
   }
 }

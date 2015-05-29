@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <title>vt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/leaflet.css">
+    <link href="https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="/leaflet.css"> -->
     <link rel="stylesheet" href="/main.css">
   </head>
 
   <div class="page">{{ page() }}</div>
   <script type="application/json" id="initial-data">{{ data() }}</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
   <script src="/common.js"></script>
   <script src="/main.js"></script>
 </html>

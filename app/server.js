@@ -21,8 +21,9 @@ app.use(stylus);
 app.use(page);
 app.use(serve(path.resolve(__dirname, '../static')));
 
-router.get('/', function* () {
-  const data = yield get('http://vt.dev/');
+router.get('/timeline/:id', function* () {
+  const data = yield get('http://vt.dev/timeline/' + this.params.id);
+  console.log(data.text);
   yield this.renderPage('pages/story', JSON.parse(data.text));
 });
 

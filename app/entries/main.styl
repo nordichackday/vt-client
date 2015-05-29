@@ -25,13 +25,24 @@ body,
   left: 0;
   right: 300px;
   bottom: 0;
-  background: #fe0;
+  background: #ddd;
 }
 
 .media-viewer #map {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.media--image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.media--image img {
+  width: 100%;
 }
 
 .timeline {
@@ -41,37 +52,81 @@ body,
   top: 0;
 }
 
-// .story-app {
-//   background: #fe0;
-//   display: flex;
-// }
-
-// .media-viewer {
-//   flex: 3;
-// }
-
-// .timeline {
-//   background: #999;
-//   flex: 1;
-//   overflow: auto;
-//   height: 800px;
-// }
-
-.timeline--entry {
-  padding: 20px;
-  border-bottom: 1px solid #999;
+.timeline--title {
+  font-size: 20px;
+  padding: 20px 20px 10px;
 }
 
-// .timeline--entry.is-visible {
-//   background: #def;
-// }
+.timeline--intro {
+  font-size: 14px;
+  padding: 5px 20px 20px;
+}
 
-// .timeline--entry.is-above-fold {
-//   background: #00f;
-// }
+.timeline--nodes {
+  border-top: 1px solid rgba(0, 0, 0, .05);
+}
 
-// #map {
-//   width: 600px;
-//   height: 400px;
-//   background: #999;
-// }
+.timeline--node {
+  // font-size: 14px;
+  position: relative;
+  padding: 14px 20px 20px 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.timeline--node:hover {
+  background: #def;
+}
+
+.timeline--node-time {
+  font-size: 12px;
+  display: inline-block;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  margin: 0 0 10px;
+}
+
+.timeline--node-intro {
+  font-size: 16px;
+}
+
+.timeline--node-body {
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+
+.timeline--node:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, .1);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.timeline--node:after {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  content: '';
+  position: absolute;
+  top: 21px;
+  left: 27px;
+  background: #999;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.timeline--node.is-active:after {
+  background: #09f;
+  width: 16px;
+  height: 16px;
+  top: 17px;
+  left: 23px;
+}
+
+.timeline--node.is-active {
+  // background: #00f;
+}

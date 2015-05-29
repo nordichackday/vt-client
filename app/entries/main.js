@@ -2,14 +2,14 @@
 
 import React from 'react';
 import Router from 'react-router';
-import Dashboard from '../pages/story';
+import Story from '../pages/story';
 
 const $ = window.jQuery;
 const { Route, RouteHandler } = Router;
 
 const routes = (
   <Route path='/' handler={RouteHandler}>
-    <Route path='/' handler={Dashboard} />
+    <Route path='/timeline/:id' handler={Story} />
   </Route>
 );
 

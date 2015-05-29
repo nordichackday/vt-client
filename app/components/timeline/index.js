@@ -4,43 +4,43 @@ import TimelineEntry from './entry';
 export default class Timeline extends React.Component {
   constructor(props) {
     props = props || {};
+
     super(props);
 
     this.state = {
+      activeStoryId: this.props.mediaId || null,
       height: 0,
       scrollTop: 0
     };
   }
 
-  componentDidMount() {
-    console.log('test');
-
-    const $win = window.jQuery(window);
-    const $el = window.jQuery(React.findDOMNode(this));
-
-    $win.on('scroll', () => {
-      console.log('scroll');
-
-      this.setState({
-        scrollTop: $win.scrollTop()
-      });
-    });
-
+  handleActivate(id) {
     this.setState({
-      height: $el.outerHeight()
+      activeStoryId: id
     });
+
+    if (this.props.onActivateNode) {
+      this.props.onActivateNode(id);
+    }
   }
 
   render() {
-    console.log('------- render timeline');
-
-    const entries = this.props.entries.map((entry, i) => {
-      return <TimelineEntry parentHeight={this.state.height} parentScrollTop={this.state.scrollTop} {...entry} key={i} />
+    const nodes = this.props.nodes.map((node, i) => {
+      return (
+        <TimelineEntry
+          isActive={node.mediaId === this.state.activeStoryId}
+          onActivate={this.handleActivate.bind(this)}
+          parentHeight={this.state.height}
+          parentScrollTop={this.state.scrollTop} {...node}
+          key={i} />
+      );
     });
 
     return (
       <div className='timeline'>
-        <div className='timeline--entries'>{entries}</div>
+        <h1 className='timeline--title'>{this.props.title}</h1>
+        <p className='timeline--intro'>{this.props.intro || 'No intro yet...'}</p>
+        <div className='timeline--nodes'>{nodes}</div>
       </div>
     );
   }
