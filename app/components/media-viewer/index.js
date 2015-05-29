@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from '../map';
 import Image from '../image';
+import Video from '../video';
 
 export default class MediaViewer extends React.Component {
   constructor(props) {
@@ -29,6 +30,10 @@ export default class MediaViewer extends React.Component {
         case 1: // image
           media = <Image data={data} />;
           break;
+
+        case 3: // video mp4
+          media = <Video data={data} />;
+          break;          
 
         default: // for demo purpose
           media = <div>Unknown media type: {type}</div>;
