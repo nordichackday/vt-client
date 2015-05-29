@@ -1,1 +1,5 @@
 /node_modules
+/static/common.js
+/static/common.js.map
+/static/main.js
+/static/main.js.map
