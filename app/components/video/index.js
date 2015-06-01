@@ -14,7 +14,7 @@ export default class Video extends React.Component {
     return (
       <div className='media--video' >
       <video autoplay>
-        <source src={data.originalUrl} type="video/mp4" />
+        <source src={data.originalUrl} type="video/mp4" muted="true" />
       </video>
       </div>
     );
